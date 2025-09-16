@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAWA | Always Together</title>
+  <style>
+    /* General reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f0f0, #e4e4e4);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Logo & Title */
+    .logo {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* Link buttons */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .link-btn {
+      display: block;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Platform colors */
+    .whatsapp { background: #25D366; }
+    .facebook { background: #1877F2; }
+    .youtube { background: #FF0000; }
+    .instagram { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); }
+    .tiktok { background: #000; }
+
+    .tiktok span {
+      background: linear-gradient(90deg, #25F4EE, #FE2C55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <img src="ChatGPT_Image_Sep_7_2025_05_32_51_PM.png" alt="SAWA Logo" class="logo" style="border-radius:50%;">
+
+  <!-- Title -->
+  <!-- <h1>SAWA</h1>
+  <p>Always Together</p> -->
+
+  <!-- Links -->
+  <div class="links">
+    <a href="https://wa.me/201556891424" target="_blank" class="link-btn whatsapp">WhatsApp</a>
+    <a href="https://www.facebook.com/profile.php?id=61581156442387" target="_blank" class="link-btn facebook">Facebook</a>
+    <a href="https://www.youtube.com/@Sawa-eg" target="_blank" class="link-btn youtube">YouTube</a>
+    <a href="https://instagram.com/sawa_eg_1" target="_blank" class="link-btn instagram">Instagram</a>
+    <a href="https://www.tiktok.com/@sawa_eg.1" target="_blank" class="link-btn tiktok"><span>TikTok</span></a>
+  </div>
+
+  <script>
+    // Small animation on load
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".link-btn").forEach((btn, i) => {
+        btn.style.opacity = 0;
+        btn.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          btn.style.transition = "all 0.6s ease";
+          btn.style.opacity = 1;
+          btn.style.transform = "translateY(0)";
+        }, i * 200);
+      });
+    });
+  </script>
+</body>
+</html>
