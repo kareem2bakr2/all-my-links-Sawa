@@ -1,0 +1,36 @@
+#should contain IBSS
+iw list | grep -A 10 "Supported interface modes"
+#to know name of the NIC 
+nmcli device status
+#update packages
+sudo apt update 
+#install olsr
+sudo apt install -y build-essential cmake libnl-3-dev libnl-genl-3-dev
+cd olsrd
+git clone https://github.com/OLSR/olsrd.git
+make sudo make install
+#test connectivity
+olsrd -v
+#make sure IBSS is in the list
+iw list | grep -A 10 "Supported interface modes"
+#setup ibss
+nmcli device set wlp0s20f3 managed no
+nmcli connection add type wifi ifname wlp0s20f3 con-name MANET ssid MANET-NET
+nmcli connection modify MANET 802-11-wireless.mode adhoc wifi-sec.key-mgmt none 
+nmcli connection modify MANET 802-11-wireless.band bg 802-11-wireless.channel 1
+nmcli connection modify MANET ipv4.method manual ipv4.addresses 10.0.0.1
+#nmcli connection up MANET 
+#stopp mamnager 
+sudo systemctl stop NetworkManager 
+sudo ip link set wlp0s20f3 down 
+sudo iw dev wlp0s20f3 set type ibss
+sudo ip link set wlp0s20f3 up
+#jion the manet
+sudo iw dev wlp0s20f3 ibss join MANET-NET 2412
+#make sure you are connected successfully
+iw dev wlp0s20f3 info
+#make sure from attaached ip address
+#you should see eg: init 10.0.0.1
+ip addr show wlp0s20f3 
+#if not run 
+sudo ip addr add 10.0.0.1/24 dev wlp0s20f3 
